@@ -153,8 +153,10 @@ body {
 /* MISSÃO VISÃO VALORES */
 
 .social {
-  background-color: #d9d6cf;
+  background-color: #101212;
+  color: #e7e0d2;
   display: flex;
+  padding: 70px 0;
 }
 
 .social .container {
@@ -162,15 +164,31 @@ body {
   flex-direction: column;
 }
 
+.social-topo {
+  text-align: center;
+}
+
+.social-topo h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  margin: 0;
+}
+
+.social-topo p {
+  margin: 10px auto 0;
+  max-width: 620px;
+}
+
 .box img {
-  width: 170px;
+  width: 110px;
 }
 
 .social .container .boxes {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
   width: 100%;
-  padding: 30px 0;
+  padding: 30px 0 24px;
 }
 
 .universo-botoes {
@@ -181,14 +199,6 @@ body {
   padding-bottom: 30px;
 }
 
-.social .btn-home {
-  color: #111313;
-}
-
-.social .btn-home:hover {
-  color: #e7e0d2;
-}
-
 .social p {
   text-align: center;
 }
@@ -197,14 +207,21 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid #343838;
+  border-radius: 10px;
+  background-color: #191c1c;
+  padding: 20px 16px;
+  box-sizing: border-box;
 }
 
 .box h4 {
-  margin-bottom: 8px;
+  margin: 14px 0 10px;
+  color: #8d332c;
 }
 
 .box p {
-  width: 85%;
+  width: 100%;
+  margin: 0;
 }
 
 .sobre-projeto {
