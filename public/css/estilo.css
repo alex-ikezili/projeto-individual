@@ -557,6 +557,15 @@ input {
   box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
 }
 
+.personagem-foto {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #303434;
+  margin-bottom: 12px;
+}
+
 .personagem-card h3 {
   margin: 10px 0 14px;
   color: #e7e0d2;
