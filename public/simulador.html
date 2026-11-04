@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Simulador</title>
+    <title>Supernatural | Personagens</title>
 
     <script src="./js/sessao.js"></script>
 
@@ -15,23 +15,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<body>
+<body class="personagens-page">
 
     <!--header inicio-->
     <div class="header">
         <div class="container">
-            <h1 class="titulo">AquaTech</h1>
+            <img src="assets/imgs/Supernatural_logo_maroon.png" alt="Logo Supernatural">
             <ul class="navbar">
                 <li>
-                    <a href="./index.html">Inicial</a>
+                    <a href="./index.html">INÍCIO</a>
                 </li>
-                <li class="agora">Simulador</li>
+                <li class="agora">
+                    <a href="#">PERSONAGENS</a>
+                </li>
+                <li>
+                    <a href="#categorias">CATEGORIAS</a>
+                </li>
                 <li>|</li>
                 <li>
-                    <a href="./login.html">Login</a>
+                    <a href="./login.html">LOGIN</a>
                 </li>
                 <li>
-                    <a href="./login.html">Cadastro</a>
+                    <a href="./cadastro.html">CADASTRO</a>
                 </li>
             </ul>
         </div>
@@ -39,29 +44,75 @@
 
 
     <!-- simulador inicio -->
-    <div class="simulador">
+    <div class="simulador personagens">
         <div class="container">
-            <h2>Simulador</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium tempora architecto sint fugit
-                dolorum? Ipsum laborum magnam similique labore, voluptate amet reprehenderit rem ab blanditiis quisquam
-                laboriosam eaque alias. Reiciendis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Accusantium tempora architecto sint fugit dolorum? Ipsum laborum magnam similique labore, voluptate amet
-                reprehenderit rem ab blanditiis quisquam laboriosam eaque alias. Reiciendis.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium tempora architecto sint fugit
-                dolorum? Ipsum laborum magnam similique labore, voluptate amet reprehenderit rem ab blanditiis quisquam
-                laboriosam eaque alias. Reiciendis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Accusantium tempora architecto sint fugit dolorum? Ipsum laborum magnam similique labore, voluptate amet
-                reprehenderit rem ab blanditiis quisquam laboriosam eaque alias. Reiciendis.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium tempora architecto sint fugit
-                dolorum? Ipsum laborum magnam similique labore, voluptate amet reprehenderit rem ab blanditiis quisquam
-                laboriosam eaque alias. Reiciendis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Accusantium tempora architecto sint fugit dolorum? Ipsum laborum magnam similique labore, voluptate amet
-                reprehenderit rem ab blanditiis quisquam laboriosam eaque alias. Reiciendis.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium tempora architecto sint fugit
-                dolorum? Ipsum laborum magnam similique labore, voluptate amet reprehenderit rem ab blanditiis quisquam
-                laboriosam eaque alias. Reiciendis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Accusantium tempora architecto sint fugit dolorum? Ipsum laborum magnam similique labore, voluptate amet
-                reprehenderit rem ab blanditiis quisquam laboriosam eaque alias. Reiciendis.</p>
+            <div class="personagens-topo">
+                <h2>Personagens Principais</h2>
+                <p>Conheça os caçadores e aliados mais marcantes de Supernatural. Cada card resume as características
+                    que fazem esses personagens serem tão queridos pelo fandom.</p>
+            </div>
+
+            <section class="personagens-grid" id="categorias">
+                <article class="personagem-card">
+                    <span class="personagem-tipo">Caçador</span>
+                    <h3>Dean Winchester</h3>
+                    <ul>
+                        <li>Líder impulsivo e protetor da família.</li>
+                        <li>Especialista em combate e investigação de casos.</li>
+                        <li>Marca registrada: coragem, sarcasmo e lealdade.</li>
+                    </ul>
+                </article>
+
+                <article class="personagem-card">
+                    <span class="personagem-tipo">Caçador</span>
+                    <h3>Sam Winchester</h3>
+                    <ul>
+                        <li>Estratégico, racional e focado em pesquisa.</li>
+                        <li>Domínio de rituais, símbolos e conhecimento oculto.</li>
+                        <li>Busca equilíbrio entre humanidade e dever.</li>
+                    </ul>
+                </article>
+
+                <article class="personagem-card">
+                    <span class="personagem-tipo">Anjo</span>
+                    <h3>Castiel</h3>
+                    <ul>
+                        <li>Anjo que escolhe lutar ao lado dos irmãos.</li>
+                        <li>Reservado, direto e guiado por princípios.</li>
+                        <li>Representa amizade e sacrifício ao longo da série.</li>
+                    </ul>
+                </article>
+
+                <article class="personagem-card">
+                    <span class="personagem-tipo">Aliado</span>
+                    <h3>Bobby Singer</h3>
+                    <ul>
+                        <li>Mentor experiente e referência para os caçadores.</li>
+                        <li>Inteligência prática para resolver casos complexos.</li>
+                        <li>Figura paterna essencial na jornada Winchester.</li>
+                    </ul>
+                </article>
+
+                <article class="personagem-card">
+                    <span class="personagem-tipo">Rei do Inferno</span>
+                    <h3>Crowley</h3>
+                    <ul>
+                        <li>Carismático, manipulador e imprevisível.</li>
+                        <li>Alterna entre antagonista e aliado estratégico.</li>
+                        <li>Humor ácido e presença forte em cena.</li>
+                    </ul>
+                </article>
+
+                <article class="personagem-card">
+                    <span class="personagem-tipo">Nefilim</span>
+                    <h3>Jack Kline</h3>
+                    <ul>
+                        <li>Filho de Lúcifer com enorme potencial.</li>
+                        <li>Inocente, curioso e em busca de pertencimento.</li>
+                        <li>Peça central nos arcos finais da série.</li>
+                    </ul>
+                </article>
+            </section>
 
         </div>
     </div>
@@ -70,7 +121,7 @@
     <!--footer inicio-->
     <div class="footer">
         <div class="container">
-            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023-2026</h4>
+            <h4>Projeto acadêmico • Supernatural Fan Site • SPTech &copy; 2026</h4>
         </div>
     </div>
     <!--footer fim-->
