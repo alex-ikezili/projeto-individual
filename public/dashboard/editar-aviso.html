@@ -36,19 +36,19 @@
             </div>
 
             <div class="btn-nav-white">
-                <a href="cards.html">
+                <a href="aquarios.html">
                     <h3>Aquários e Terrários</h3>
                 </a>
             </div>
 
             <div class="btn-nav-white">
-                <a href="./dashboard.html">
+                <a href="./graficos.html">
                     <h3>Gráficos</h3>
                 </a>
             </div>
 
             <div class="btn-nav-white">
-                <a href="./mural.html">
+                <a href="./avisos.html">
                     <h3>Mural de Avisos</h3>
                 </a>
             </div>
@@ -118,7 +118,7 @@
 
             if (resposta.ok) {
                 window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/mural.html"
+                window.location = "/dashboard/avisos.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {

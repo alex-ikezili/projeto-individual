@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Login</title>
+    <title>Supernatural | Login</title>
 
     <script src="./js/sessao.js"></script>
 
@@ -21,13 +21,13 @@
 
     <div class="header">
         <div class="container">
-            <h1 class="titulo">AquaTech</h1>
+            <img src="assets/imgs/Supernatural_logo_maroon.png" alt="Logo Supernatural">
             <ul class="navbar">
                 <li>
                     <a href="index.html">Inicial</a>
                 </li>
                 <li>
-                    <a href="simulador.html">Simulador</a>
+                    <a href="personagens.html">Personagens</a>
                 </li>
                 <li>|</li>
                 <li class="agora">
@@ -130,7 +130,7 @@
                     sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./dashboard/aquarios.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
