@@ -159,6 +159,7 @@ body {
 
 .social .container {
   justify-content: center;
+  flex-direction: column;
 }
 
 .box img {
@@ -170,6 +171,22 @@ body {
   justify-content: space-between;
   width: 100%;
   padding: 30px 0;
+}
+
+.universo-botoes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 30px;
+}
+
+.social .btn-home {
+  color: #111313;
+}
+
+.social .btn-home:hover {
+  color: #e7e0d2;
 }
 
 .social p {
