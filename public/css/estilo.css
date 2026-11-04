@@ -93,6 +93,12 @@ body {
   height: 100%;
 }
 
+.banner-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .banner .container p {
   width: 50%;
   margin: 0;
@@ -114,10 +120,40 @@ body {
   padding: 0px 0px 0px 10px;
 }
 
+.banner-botoes {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #e7e0d2;
+  border: 1px solid #8d332c;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  transition: .2s ease;
+}
+
+.btn-home:hover {
+  background-color: #8d332c;
+}
+
+.btn-destaque {
+  background-color: #8d332c;
+}
+
+.btn-destaque:hover {
+  filter: brightness(1.1);
+}
+
 /* MISSÃO VISÃO VALORES */
 
 .social {
-  background-color: #e5e5e5;
+  background-color: #d9d6cf;
   display: flex;
 }
 
@@ -146,14 +182,114 @@ body {
   align-items: center;
 }
 
+.box h4 {
+  margin-bottom: 8px;
+}
+
+.box p {
+  width: 85%;
+}
+
+.sobre-projeto {
+  background-color: #111313;
+  color: #e7e0d2;
+  padding: 70px 0;
+}
+
+.sobre-projeto .container {
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.sobre-texto,
+.sobre-card {
+  width: 48%;
+}
+
+.sobre-texto h2,
+.momentos h2,
+.cta-home h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  margin-top: 0;
+}
+
+.sobre-card {
+  background-color: #191c1c;
+  border: 1px solid #8d332c;
+  border-radius: 8px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.sobre-card ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.sobre-card li {
+  margin-bottom: 12px;
+}
+
+.momentos {
+  background-color: #0a0a0a;
+  color: #e7e0d2;
+  padding: 70px 0;
+}
+
+.momentos .container {
+  flex-direction: column;
+}
+
+.momentos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.momento-item {
+  border: 1px solid #343838;
+  border-radius: 10px;
+  padding: 18px;
+  background-color: #111313;
+}
+
+.momento-item h3 {
+  margin: 10px 0;
+}
+
+.tag-temporada {
+  color: #8d332c;
+  font-size: 13px;
+}
+
+.cta-home {
+  background: linear-gradient(180deg, #0d0f0f 0%, #151717 100%);
+  color: #e7e0d2;
+  padding: 70px 0;
+}
+
+.cta-home .container {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cta-botoes {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+}
+
 /* FOOTER */
 
 .footer {
-  background-color: #32b9cd;
-  height: 150px;
-  color: #fff;
+  background-color: #090a0a;
+  height: 90px;
+  color: #e7e0d2;
   display: flex;
   font-size: 15px;
+  border-top: 1px solid #8d332c;
 }
 
 .footer .container {
@@ -163,6 +299,36 @@ body {
 
 .footer .container .version {
   font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    width: 70%;
+  }
+
+  .banner .container p {
+    width: 90%;
+    font-size: 42px;
+  }
+
+  .social .container .boxes,
+  .sobre-projeto .container,
+  .momentos-grid,
+  .cta-botoes,
+  .banner-botoes {
+    flex-direction: column;
+    display: flex;
+  }
+
+  .momentos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .sobre-texto,
+  .sobre-card {
+    width: 100%;
+  }
 }
 
 /* LOGIN */

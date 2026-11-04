@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
@@ -27,7 +27,7 @@
           <a href="simulador.html">PERSONAGENS</a>
         </li>
         <li>
-          <a>MONSTROS</a>
+          <a href="#universo">MONSTROS</a>
         </li>
         <li>|</li>
         <li>
@@ -42,7 +42,13 @@
 
   <div class="banner">
     <div class="container">
-      <p>Estrada, <span>Monstros</span><br> e Família.</p>
+      <div class="banner-conteudo">
+        <p>Estrada, <span>Monstros</span><br> e Família.</p>
+        <div class="banner-botoes">
+          <a href="cadastro.html" class="btn-home btn-destaque">Entrar para o fandom</a>
+          <a href="simulador.html" class="btn-home">Ver personagens</a>
+        </div>
+      </div>
     </div>
     <div class="sublegenda">
       <span>“Algumas histórias terminam.<br>
@@ -50,37 +56,88 @@
     </div>
   </div>
 
-  <div class="social">
+  <section class="social" id="universo">
     <div class="container">
       <div class="boxes">
         <div class="box">
           <img src="assets/imgs/planet-earth_color.png">
           <h4>Missão</h4>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-            vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-            minima.</p>
+          <p>Criar um espaço para fãs de Supernatural registrarem personagens favoritos, episódios marcantes e teorias
+            sobre o universo da série.</p>
         </div>
         <div class="box">
           <img src="assets/imgs/lightbulb_color.png">
           <h4>Visão</h4>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-            vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-            minima.</p>
+          <p>Transformar o site em um dashboard completo de comunidade, reunindo avaliações, rankings e comentários
+            pessoais em um só lugar.</p>
         </div>
         <div class="box">
           <img src="assets/imgs/growth_color.png">
           <h4>Valores</h4>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-            vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-            minima.</p>
+          <p>Paixão pela história, respeito entre fãs e organização das informações de forma clara para valorizar cada
+            temporada da jornada Winchester.</p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="sobre-projeto">
+    <div class="container">
+      <div class="sobre-texto">
+        <h2>Sobre o projeto</h2>
+        <p>Este site foi desenvolvido como projeto acadêmico para aplicar na prática HTML, CSS, JavaScript, Node.js,
+          Express e MySQL.</p>
+        <p>A proposta é coletar dados via formulário e transformar essas informações em visualizações no dashboard,
+          facilitando a leitura dos gostos e opiniões da comunidade sobre Supernatural.</p>
+      </div>
+      <div class="sobre-card">
+        <h3>O que você pode fazer aqui</h3>
+        <ul>
+          <li>Criar conta e salvar suas preferências.</li>
+          <li>Avaliar personagens e episódios marcantes.</li>
+          <li>Explorar dados organizados no dashboard.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="momentos">
+    <div class="container">
+      <h2>Momentos marcantes da estrada</h2>
+      <div class="momentos-grid">
+        <article class="momento-item">
+          <span class="tag-temporada">Temporada 1</span>
+          <h3>Começo da caçada</h3>
+          <p>Dean e Sam voltam à estrada para investigar casos sobrenaturais e procurar o pai.</p>
+        </article>
+        <article class="momento-item">
+          <span class="tag-temporada">Temporada 5</span>
+          <h3>Apocalipse em curso</h3>
+          <p>Conflito entre céu e inferno eleva a história a outro nível e marca um dos arcos mais lembrados.</p>
+        </article>
+        <article class="momento-item">
+          <span class="tag-temporada">Temporada 15</span>
+          <h3>Legado Winchester</h3>
+          <p>O encerramento reforça que o centro da série sempre foi a família e o caminho percorrido juntos.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-home">
+    <div class="container">
+      <h2>Pronto para registrar os seus favoritos?</h2>
+      <p>Crie sua conta e comece a montar seu próprio histórico dentro do universo Supernatural.</p>
+      <div class="cta-botoes">
+        <a href="cadastro.html" class="btn-home btn-destaque">Criar conta</a>
+        <a href="login.html" class="btn-home">Já tenho login</a>
+      </div>
+    </div>
+  </section>
 
   <div class="footer">
     <div class="container">
-      <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023-2026</h4>
+      <h4>Projeto acadêmico • Supernatural Fan Site • SPTech &copy; 2026</h4>
     </div>
   </div>
 </body>
