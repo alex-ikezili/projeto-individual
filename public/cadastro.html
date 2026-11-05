@@ -118,28 +118,6 @@
 </html>
 
 <script>
-  function gerarCpfTemporario() {
-    return String(Date.now()).slice(-11).padStart(11, "0");
-  }
-
-  function obterEmpresaPadrao() {
-    return fetch("/empresas/listar", {
-      method: "GET"
-    }).then(function (resposta) {
-      if (resposta.ok) {
-        return resposta.json();
-      }
-      return [];
-    }).then(function (empresas) {
-      if (empresas.length > 0) {
-        return empresas[0].id;
-      }
-      return 1;
-    }).catch(function () {
-      return 1;
-    });
-  }
-
   function cadastrar() {
     aguardar();
 
@@ -162,49 +140,44 @@
       return false;
     }
 
-    obterEmpresaPadrao().then(function (idEmpresaVincular) {
-      var cpfGerado = gerarCpfTemporario();
 
-      fetch("/usuarios/cadastrar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nomeServer: nomeVar,
-          emailServer: emailVar,
-          senhaServer: senhaVar,
-          idEmpresaVincularServer: idEmpresaVincular,
-          cpfServer: cpfGerado,
-          personagemFavoritoServer: personagemVar,
-          monstroMedoServer: monstroVar
-        }),
-      })
-        .then(function (resposta) {
-          if (resposta.ok) {
-            cardErro.style.display = "block";
-            mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para login...";
-
-            setTimeout(() => {
-              window.location = "login.html";
-            }, 1800);
-
-            finalizarAguardar();
-          } else {
-            resposta.text().then(function (texto) {
-              cardErro.style.display = "block";
-              mensagem_erro.innerHTML = texto || "Houve um erro ao tentar realizar o cadastro.";
-              finalizarAguardar();
-            });
-          }
-        })
-        .catch(function (erro) {
-          console.log(`#ERRO: ${erro}`);
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        personagemFavoritoServer: personagemVar,
+        monstroMedoServer: monstroVar
+      }),
+    })
+      .then(function (resposta) {
+        if (resposta.ok) {
           cardErro.style.display = "block";
-          mensagem_erro.innerHTML = "Erro ao tentar cadastrar usuário.";
+          mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, 1800);
+
           finalizarAguardar();
-        });
-    });
+        } else {
+          resposta.text().then(function (texto) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = texto || "Houve um erro ao tentar realizar o cadastro.";
+            finalizarAguardar();
+          });
+        }
+      })
+      .catch(function (erro) {
+        console.log(`#ERRO: ${erro}`);
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "Erro ao tentar cadastrar usuário.";
+        finalizarAguardar();
+      });
 
     return false;
   }
