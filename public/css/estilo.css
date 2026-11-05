@@ -181,6 +181,10 @@ body {
 
 .box img {
   width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #343838;
 }
 
 .social .container .boxes {
