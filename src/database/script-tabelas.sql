@@ -30,3 +30,19 @@ CREATE TABLE usuario (
 	fk_monstro INT,
 	FOREIGN KEY (fk_monstro) REFERENCES monstro(id)
 );
+
+INSERT INTO personagem (nome) VALUES
+('Dean Winchester'),
+('Sam Winchester'),
+('Castiel'),
+('Bobby Singer'),
+('Crowley'),
+('Jack Kline');
+
+INSERT INTO monstro (nome) VALUES
+('Wendigo'),
+('Azazel'),
+('Lilith'),
+('Leviatãs'),
+('Djinn'),
+('Shapeshifter');
