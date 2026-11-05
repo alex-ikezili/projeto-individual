@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8" />
@@ -15,204 +15,197 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<body onload="listar()">
-  <!--header inicio-->
+<body class="auth-page">
   <div class="header">
     <div class="container">
       <img src="assets/imgs/Supernatural_logo_maroon.png" alt="Logo Supernatural" />
       <ul class="navbar">
         <li>
-          <a href="index.html">Inicial</a>
+          <a href="index.html">INÍCIO</a>
         </li>
         <li>
-          <a href="personagens.html">Personagens</a>
+          <a href="personagens.html">PERSONAGENS</a>
+        </li>
+        <li>
+          <a href="monstros.html">MONSTROS</a>
         </li>
         <li>|</li>
         <li>
-          <a href="login.html">Login</a>
+          <a href="login.html">LOGIN</a>
         </li>
         <li class="agora">
-          <a href="#">Cadastro</a>
+          <a href="#">CADASTRO</a>
         </li>
       </ul>
     </div>
   </div>
-  <!--header fim-->
 
-  <div class="login">
-    <div class="alerta_erro">
-      <div class="card_erro" id="cardErro">
-        <span id="mensagem_erro"></span>
-      </div>
-    </div>
+  <main class="auth-section">
     <div class="container">
-      <div class="card card-cadastro">
-        <h2>Bem-vindo!</h2>
-        <div class="formulario">
-          <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
+      <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+          <span id="mensagem_erro"></span>
+        </div>
+      </div>
+
+      <section class="auth-card auth-card-cadastro">
+        <h2>Crie sua conta</h2>
+        <p>Registre seu perfil para salvar preferências e explorar os dados do universo Supernatural.</p>
+
+        <div class="formulario auth-formulario">
           <div class="campo">
-            <span>Código de ativação:</span>
-            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-          </div>
-          <div class="campo">
-            <span>Nome:</span>
+            <span>Nome</span>
             <input id="nome_input" type="text" placeholder="Seu nome" />
           </div>
+
           <div class="campo">
-            <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+            <span>E-mail</span>
+            <input id="email_input" type="email" placeholder="seuemail@provedor.com" />
           </div>
-           <div class="campo">
-            <span>CPF:</span>
-            <input id="cpf_input" type="text" placeholder="Seu CPF" />
-          </div>
+
           <div class="campo">
-            <span>Senha:</span>
+            <span>Senha</span>
             <input id="senha_input" type="password" placeholder="******" />
           </div>
+
           <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
+            <span>Personagem favorito</span>
+            <select id="personagem_input">
+              <option value="">Selecione um personagem</option>
+              <option value="Dean Winchester">Dean Winchester</option>
+              <option value="Sam Winchester">Sam Winchester</option>
+              <option value="Castiel">Castiel</option>
+              <option value="Bobby Singer">Bobby Singer</option>
+              <option value="Crowley">Crowley</option>
+              <option value="Jack Kline">Jack Kline</option>
+            </select>
           </div>
+
+          <div class="campo">
+            <span>Monstro que mais tem medo</span>
+            <select id="monstro_input">
+              <option value="">Selecione um monstro</option>
+              <option value="Wendigo">Wendigo</option>
+              <option value="Azazel">Azazel</option>
+              <option value="Lilith">Lilith</option>
+              <option value="Leviatãs">Leviatãs</option>
+              <option value="Djinn">Djinn</option>
+              <option value="Shapeshifter">Shapeshifter</option>
+            </select>
+          </div>
+
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
+
         <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
+          <img src="./assets/circle-loading.gif" id="loading-gif" alt="Carregando" />
         </div>
 
         <div id="div_erros_login"></div>
-      </div>
-    </div>
-  </div>
 
-  <!--footer inicio-->
+        <span class="auth-auxiliar">Já tem conta? <a href="login.html">Fazer login</a></span>
+      </section>
+    </div>
+  </main>
+
   <div class="footer">
     <div class="container">
-      <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023-2026</h4>
+      <h4>Projeto acadêmico • Supernatural Fan Site • SPTech &copy; 2026</h4>
     </div>
   </div>
-  <!--footer fim-->
 </body>
 
 </html>
 
 <script>
+  function gerarCpfTemporario() {
+    return String(Date.now()).slice(-11).padStart(11, "0");
+  }
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
+  function obterEmpresaPadrao() {
+    return fetch("/empresas/listar", {
+      method: "GET"
+    }).then(function (resposta) {
+      if (resposta.ok) {
+        return resposta.json();
+      }
+      return [];
+    }).then(function (empresas) {
+      if (empresas.length > 0) {
+        return empresas[0].id;
+      }
+      return 1;
+    }).catch(function () {
+      return 1;
+    });
+  }
 
   function cadastrar() {
-    // aguardar();
+    aguardar();
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
-    var cpfVar = cpf_input.value;
+    var personagemVar = personagem_input.value;
+    var monstroVar = monstro_input.value;
 
-    // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == "" ||
-      cpfVar == ""
+      personagemVar == "" ||
+      monstroVar == ""
     ) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
+      mensagem_erro.innerHTML = "Preencha todos os campos para continuar.";
       finalizarAguardar();
       return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
     }
 
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
-    }
+    obterEmpresaPadrao().then(function (idEmpresaVincular) {
+      var cpfGerado = gerarCpfTemporario();
 
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular,
-        cpfServer: cpfVar
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
-
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nomeServer: nomeVar,
+          emailServer: emailVar,
+          senhaServer: senhaVar,
+          idEmpresaVincularServer: idEmpresaVincular,
+          cpfServer: cpfGerado,
+          personagemFavoritoServer: personagemVar,
+          monstroMedoServer: monstroVar
+        }),
       })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
+        .then(function (resposta) {
+          if (resposta.ok) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para login...";
+
+            setTimeout(() => {
+              window.location = "login.html";
+            }, 1800);
+
+            finalizarAguardar();
+          } else {
+            resposta.text().then(function (texto) {
+              cardErro.style.display = "block";
+              mensagem_erro.innerHTML = texto || "Houve um erro ao tentar realizar o cadastro.";
+              finalizarAguardar();
+            });
+          }
+        })
+        .catch(function (erro) {
+          console.log(`#ERRO: ${erro}`);
+          cardErro.style.display = "block";
+          mensagem_erro.innerHTML = "Erro ao tentar cadastrar usuário.";
+          finalizarAguardar();
+        });
+    });
 
     return false;
-  }
-
-  // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
-
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
-
-  function sumirMensagem() {
-    cardErro.style.display = "none";
   }
 </script>

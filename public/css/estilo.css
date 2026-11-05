@@ -709,3 +709,134 @@ input {
   75%  {transform: rotate(-25deg)}
   100% {transform: rotate(25deg)}
 }
+
+/* AUTH PAGES */
+
+.auth-page .header {
+  position: fixed;
+  z-index: 10;
+  background-color: rgba(5, 6, 6, 0.92);
+  backdrop-filter: blur(3px);
+}
+
+.auth-section {
+  min-height: 100vh;
+  padding: 130px 0 60px;
+  color: #e7e0d2;
+  background-image: linear-gradient(180deg, rgba(5, 6, 6, .95) 0%, rgba(11, 13, 13, .96) 100%), url('../assets/imgs/banner-fundo.jpeg');
+  background-size: cover;
+  background-position: center;
+  box-sizing: border-box;
+}
+
+.auth-section .container {
+  justify-content: center;
+}
+
+.auth-card {
+  width: min(560px, 100%);
+  border: 1px solid #343838;
+  border-radius: 12px;
+  background-color: #191c1c;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+.auth-card h2 {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+}
+
+.auth-card p {
+  margin-top: 10px;
+  color: #d5cfbf;
+}
+
+.auth-formulario {
+  width: 100%;
+  gap: 12px;
+}
+
+.auth-formulario span {
+  font-size: 14px;
+  color: #e7e0d2;
+  font-weight: 500;
+}
+
+.auth-formulario input,
+.auth-formulario select {
+  border: 1px solid #343838;
+  color: #e7e0d2;
+  background-color: #111313;
+  border-radius: 8px;
+  padding: 11px 12px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.auth-formulario input::placeholder {
+  color: #8f8f8f;
+}
+
+.auth-formulario select option {
+  background-color: #111313;
+}
+
+.auth-formulario .botao {
+  width: 100%;
+  height: 42px;
+  border: 1px solid #8d332c;
+  background-color: #8d332c;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+.auth-formulario .botao:hover {
+  filter: brightness(1.1);
+}
+
+.auth-auxiliar {
+  display: block;
+  margin-top: 14px;
+  text-align: center;
+}
+
+.auth-auxiliar a {
+  color: #8d332c;
+  text-decoration: none;
+}
+
+.auth-auxiliar a:hover {
+  text-decoration: underline;
+}
+
+.auth-page .alerta_erro {
+  justify-content: center;
+}
+
+.auth-page .card_erro {
+  width: min(560px, 100%);
+  margin-right: 0;
+  border: 1px solid #8d332c;
+  color: #e7e0d2;
+  background-color: #191c1c;
+}
+
+.auth-page .card_erro #mensagem_erro {
+  font-size: 16px;
+}
+
+.auth-page .loading-div {
+  margin: 10px auto 0;
+}
+
+@media (max-width: 900px) {
+  .auth-card {
+    padding: 22px;
+  }
+
+  .auth-card h2 {
+    font-size: 36px;
+  }
+}
