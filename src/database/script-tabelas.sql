@@ -26,7 +26,7 @@ CREATE TABLE usuario (
 	email VARCHAR(50),
 	senha VARCHAR(50),
 	fk_personagem INT,
-	FOREIGN KEY (fk_personagem) REFERENCES personagem(id)
+	FOREIGN KEY (fk_personagem) REFERENCES personagem(id),
 	fk_monstro INT,
 	FOREIGN KEY (fk_monstro) REFERENCES monstro(id)
 );
