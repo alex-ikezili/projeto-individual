@@ -762,6 +762,7 @@ input {
   font-size: 14px;
   color: #e7e0d2;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .auth-formulario input,
