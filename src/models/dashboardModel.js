@@ -58,7 +58,7 @@ function buscarMonstrosTemidos() {
         SELECT
             m.id,
             m.nome,
-            COUNT(u.id) AS totalTemidos
+            COUNT(u.id) AS totalTemidos,
             ROUND(
                 COUNT(u.id) * 100 /
                 NULLIF(
