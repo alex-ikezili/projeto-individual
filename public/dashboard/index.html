@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/dashboard-supernatural.css">
+
+</head>
+
+<body onload="inicializarDashboard()">
+
+    <div class="header">
+        <div class="container">
+            <img src="../assets/imgs/Supernatural_logo_maroon.png">
+            <ul class="navbar">
+                <li class="agora">
+                    <a href="#">INÍCIO</a>
+                </li>
+                <li>
+                    <a href="personagens.html">PERSONAGENS</a>
+                </li>
+                <li>
+                    <a href="monstros.html">MONSTROS</a>
+                </li>
+                <li>|</li>
+                <li>
+                    <a href="login.html">LOGIN</a>
+                </li>
+                <li>
+                    <a href="cadastro.html">CADASTRO</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="dashboard-container">
+
+        <section class="dashboard-boas-vindas">
+            <h1>Bem-vindo, <span id="nomeUsuario"></span></h1>
+            <p>Seu perfil de caçador.</p>
+        </section>
+
+        <section class="preferencias">
+            <h2>Suas escolhas</h2>
+
+            <div id="personagemFavorito"></div>
+
+            <div id="monstroTemido"></div>
+        </section>
+
+        <section class="ranking-personagens">
+            <h2>Personagens favoritos</h2>
+             
+            <div id="listaPersonagens"></div>
+        </section>
+
+        <section class="ranking-monstros">
+            <h2>Monstros mais temidos</h2>
+
+            <div id="listaMonstros"></div>
+        </section>
+
+    </main>
+
+    <div class="footer">
+        <div class="container">
+            <h4>Projeto acadêmico • Supernatural Fan Site • SPTech &copy; 2026</h4>
+        </div>
+    </div>
+
+</body>
+
+</html>

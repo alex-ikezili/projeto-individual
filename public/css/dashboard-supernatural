@@ -1,0 +1,35 @@
+/* Estrutura geral */
+.dashboard-container {
+    /* largura e espaçamento */
+}
+
+/* Boas-vindas */
+.dashboard-boas-vindas {
+    /* título e apresentação */
+}
+
+/* Preferências pessoais */
+.preferencias {
+    /* organização dos cards */
+}
+
+/* Rankings */
+.ranking-personagens,
+.ranking-monstros {
+    /* organização das listas */
+}
+
+/* Cards individuais */
+.dashboard-card {
+    /* imagem, título e quantidade de votos */
+}
+
+/* Pesquisa */
+.dashboard-busca {
+    /* input e foco */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    /* adaptação para dispositivos menores */
+}
