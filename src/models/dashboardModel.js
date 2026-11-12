@@ -29,7 +29,15 @@ function buscarPersonagensFavoritos() {
         SELECT
             p.id,
             p.nome,
-            COUNT(u.id) AS totalFavoritos
+            COUNT(u.id) AS totalFavoritos,
+            ROUND(
+                COUNT(u.id) * 100 /
+                NULLIF(
+                    (SELECT COUNT(*)
+                    FROM usuario
+                    ), 0
+                ), 1
+            ) AS percentualPreferencia
 
         FROM personagem p
 
@@ -51,6 +59,14 @@ function buscarMonstrosTemidos() {
             m.id,
             m.nome,
             COUNT(u.id) AS totalTemidos
+            ROUND(
+                COUNT(u.id) * 100 /
+                NULLIF(
+                    (SELECT COUNT(*)
+                    FROM usuario
+                    ), 0
+                ), 1
+            ) AS percentualPreferencia
 
         FROM monstro m
 
