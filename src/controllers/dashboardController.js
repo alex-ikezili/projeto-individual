@@ -33,6 +33,13 @@ function buscarPersonagensFavoritos(req, res) {
         .then(resultado => {
             res.status(200).json(resultado)
         })
+        .catch(erro => {
+            console.error(erro);
+
+            res.status(500).json({
+                mensagem: "Erro ao buscar personagens"
+            });
+        });
 }
 
 function buscarMonstrosTemidos(req, res) {
@@ -40,6 +47,13 @@ function buscarMonstrosTemidos(req, res) {
         .then(resultado => {
             res.status(200).json(resultado)
         })
+         .catch(erro => {
+            console.error(erro);
+
+            res.status(500).json({
+                mensagem: "Erro ao buscar monstros"
+            });
+        });
 }
 
 module.exports = {
