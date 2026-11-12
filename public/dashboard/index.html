@@ -13,6 +13,7 @@
 
     <!-- <script src="../js/sessao.js"></script> -->
     <script src="../js/dashboard-supernatural.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
@@ -26,17 +27,17 @@
                     <a href="#">INÍCIO</a>
                 </li>
                 <li>
-                    <a href="personagens.html">PERSONAGENS</a>
+                    <a href="../personagens.html">PERSONAGENS</a>
                 </li>
                 <li>
-                    <a href="monstros.html">MONSTROS</a>
+                    <a href="../monstros.html">MONSTROS</a>
                 </li>
                 <li>|</li>
                 <li>
-                    <a href="login.html">LOGIN</a>
+                    <a href="../login.html">LOGIN</a>
                 </li>
                 <li>
-                    <a href="cadastro.html">CADASTRO</a>
+                    <a href="../cadastro.html">CADASTRO</a>
                 </li>
             </ul>
         </div>
@@ -49,24 +50,64 @@
             <p>Seu perfil de caçador.</p>
         </section>
 
+        <!-- PREFERÊNCIAS PESSOAIS -->
+
         <section class="preferencias">
+
             <h2>Suas escolhas</h2>
 
-            <div id="personagemFavorito"></div>
+            <div class="preferencias-grid">
 
-            <div id="monstroTemido"></div>
+                <div id="personagemFavorito"></div>
+
+                <div id="monstroTemido"></div>
+
+            </div>
+
         </section>
 
-        <section class="ranking-personagens">
-            <h2>Personagens favoritos</h2>
-             
-            <div id="listaPersonagens"></div>
+        <!-- KPIs DA COMUNIDADE -->
+
+        <section class="indicadores">
+
+            <h2>Preferências da comunidade</h2>
+
+            <div class="indicadores-grid">
+
+                <div id="kpiPersonagem"></div>
+
+                <div id="kpiMonstro"></div>
+
+            </div>
+
         </section>
 
-        <section class="ranking-monstros">
-            <h2>Monstros mais temidos</h2>
+        <!-- GRÁFICOS -->
 
-            <div id="listaMonstros"></div>
+        <section class="graficos">
+
+            <h2>Ranking da comunidade</h2>
+
+            <div class="graficos-grid">
+
+                <div class="grafico-card">
+
+                    <h3>Personagens favoritos</h3>
+
+                    <canvas id="graficoPersonagens"></canvas>
+
+                </div>
+
+                <div class="grafico-card">
+
+                    <h3>Monstros mais temidos</h3>
+
+                    <canvas id="graficoMonstros"></canvas>
+
+                </div>
+
+            </div>
+
         </section>
 
     </main>
