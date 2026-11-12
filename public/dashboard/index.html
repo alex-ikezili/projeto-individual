@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="../css/dashboard-supernatural.css">
 
-    <!-- <script src="../js/sessao.js"></script> -->
-    <script src="../js/dashboard-supernatural.js"></script>
+    <!-- <script src="../js/dashboard-supernatural.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
@@ -46,68 +45,52 @@
     <main class="dashboard-container">
 
         <section class="dashboard-boas-vindas">
-            <h1>Bem-vindo, <span id="nomeUsuario"></span></h1>
-            <p>Seu perfil de caçador.</p>
+            <h1>Dashboard — Supernatural</h1>
+            <p>Preferências da comunidade e do seu perfil</p>
         </section>
-
-        <!-- PREFERÊNCIAS PESSOAIS -->
 
         <section class="preferencias">
-
-            <h2>Suas escolhas</h2>
-
             <div class="preferencias-grid">
+                <div class="card-preferencia">
+                    <h3>Seu Personagem Favorito</h3>
+                    <p id="personagemFavorito">Carregando...</p>
+                </div>
 
-                <div id="personagemFavorito"></div>
-
-                <div id="monstroTemido"></div>
-
+                <div class="card-preferencia">
+                    <h3>Seu Monstro Mais Temido</h3>
+                    <p id="monstroTemido">Carregando...</p>
+                </div>
             </div>
-
         </section>
-
-        <!-- KPIs DA COMUNIDADE -->
 
         <section class="indicadores">
-
-            <h2>Preferências da comunidade</h2>
-
             <div class="indicadores-grid">
+                <div class="kpi-card">
+                    <h3>Personagem Favorito da Comunidade</h3>
+                    <p id="kpiPersonagemNome">-</p>
+                    <span id="kpiPersonagemPercentual">0%</span>
+                </div>
 
-                <div id="kpiPersonagem"></div>
-
-                <div id="kpiMonstro"></div>
-
+                <div class="kpi-card">
+                    <h3>Monstro Mais Temido da Comunidade</h3>
+                    <p id="kpiMonstroNome">-</p>
+                    <span id="kpiMonstroPercentual">0%</span>
+                </div>
             </div>
-
         </section>
 
-        <!-- GRÁFICOS -->
-
         <section class="graficos">
-
-            <h2>Ranking da comunidade</h2>
-
             <div class="graficos-grid">
-
                 <div class="grafico-card">
-
-                    <h3>Personagens favoritos</h3>
-
+                    <h3>Personagens Favoritos (Top 5)</h3>
                     <canvas id="graficoPersonagens"></canvas>
-
                 </div>
 
                 <div class="grafico-card">
-
-                    <h3>Monstros mais temidos</h3>
-
+                    <h3>Monstros Mais Temidos (Top 5)</h3>
                     <canvas id="graficoMonstros"></canvas>
-
                 </div>
-
             </div>
-
         </section>
 
     </main>
