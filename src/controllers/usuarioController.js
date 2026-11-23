@@ -1,5 +1,4 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -26,21 +25,6 @@ function autenticar(req, res) {
                             nome: resultadoAutenticar[0].nome
                         });
 
-                        // aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                        //     .then((resultadoAquarios) => {
-                        //         if (resultadoAquarios.length > 0) {
-                        //             res.json({
-                        //                 id: resultadoAutenticar[0].id,
-                        //                 email: resultadoAutenticar[0].email,
-                        //                 nome: resultadoAutenticar[0].nome,
-                        //                 senha: resultadoAutenticar[0].senha,
-                        //                 personagem: resultadoAutenticar[0].personagem,
-                        //                 monstro: resultadoAutenticar[0].monstro
-                        //             });
-                        //         } else {
-                        //             res.status(204).json({ aquarios: [] });
-                        //         }
-                        //     })
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -98,7 +82,38 @@ function cadastrar(req, res) {
     }
 }
 
+function atualizarPreferencias(req, res) {
+    var idUsuario = req.body.idUsuarioServer;
+    var personagem = req.body.personagemFavoritoServer;
+    var monstro = req.body.monstroMedoServer;
+
+    if (idUsuario == undefined || Number(idUsuario) <= 0) {
+        return res.status(400).send("ID do usuário inválido!");
+    } else if (personagem == undefined || personagem === "") {
+        return res.status(400).send("Seu personagem está undefined!");
+    } else if (monstro == undefined || monstro === "") {
+        return res.status(400).send("Seu monstro está undefined!");
+    }
+
+    usuarioModel.atualizarPreferencias(idUsuario, personagem, monstro)
+        .then(function (resultado) {
+            if (resultado.affectedRows === 0) {
+                return res.status(404).send("Usuário não encontrado!");
+            }
+
+            return res.status(200).json({
+                mensagem: "Preferências atualizadas com sucesso"
+            });
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao atualizar preferências! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    atualizarPreferencias
 }

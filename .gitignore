@@ -6,3 +6,13 @@ package-lock.json
 
 .DS_Store
 **/.DS_Store
+
+# credenciais locais
+.env
+.env.dev
+
+# arquivos de trabalho locais (OpenClaw / inbound)
+media/
+memory/
+
+docs
