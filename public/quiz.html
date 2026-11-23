@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supernatural | Quiz</title>
+
+  <script src="./js/sessao.js"></script>
+  <script src="./js/quiz.js" defer></script>
+
+  <link rel="stylesheet" href="./css/estilo.css" />
+  <link rel="icon" href="./assets/icon/favicon2.ico" />
+</head>
+
+<body class="auth-page" onload="inicializarQuiz()">
+  <div class="header">
+    <div class="container">
+      <img src="assets/imgs/Supernatural_logo_maroon.png" alt="Logo Supernatural" />
+      <ul class="navbar">
+        <li><a href="index.html">INÍCIO</a></li>
+        <li><a href="personagens.html">PERSONAGENS</a></li>
+        <li><a href="monstros.html">MONSTROS</a></li>
+        <li class="agora"><a href="#">QUIZ</a></li>
+        <li>|</li>
+        <li><a href="dashboard.html">DASHBOARD</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main class="auth-section">
+    <div class="container">
+      <section class="auth-card auth-card-quiz">
+        <h2>Quiz de Monstros</h2>
+        <p>Responda as 5 perguntas e registre sua pontuação. A dashboard sempre considera sua maior pontuação.</p>
+
+        <form id="quizForm" class="auth-formulario">
+          <div class="campo quiz-pergunta">
+            <span>1) Qual criatura se alimenta de carne humana em florestas isoladas?</span>
+            <label class="quiz-alternativa"><input type="radio" name="q1" value="Wendigo" /> Wendigo</label>
+            <label class="quiz-alternativa"><input type="radio" name="q1" value="Leviatã" /> Leviatã</label>
+            <label class="quiz-alternativa"><input type="radio" name="q1" value="Ghoul" /> Ghoul</label>
+          </div>
+
+          <div class="campo quiz-pergunta">
+            <span>2) Qual criatura cria ilusões para prender suas vítimas?</span>
+            <label class="quiz-alternativa"><input type="radio" name="q2" value="Djinn" /> Djinn</label>
+            <label class="quiz-alternativa"><input type="radio" name="q2" value="Fantasma" /> Fantasma</label>
+            <label class="quiz-alternativa"><input type="radio" name="q2" value="Bruxa" /> Bruxa</label>
+          </div>
+
+          <div class="campo quiz-pergunta">
+            <span>3) Qual criatura muda de aparência copiando outras pessoas?</span>
+            <label class="quiz-alternativa"><input type="radio" name="q3" value="Metamorfo (Shapeshifter)" /> Metamorfo (Shapeshifter)</label>
+            <label class="quiz-alternativa"><input type="radio" name="q3" value="Kitsune" /> Kitsune</label>
+            <label class="quiz-alternativa"><input type="radio" name="q3" value="Rugaru" /> Rugaru</label>
+          </div>
+
+          <div class="campo quiz-pergunta">
+            <span>4) Qual criatura é um predador antigo libertado do Purgatório?</span>
+            <label class="quiz-alternativa"><input type="radio" name="q4" value="Leviatã" /> Leviatã</label>
+            <label class="quiz-alternativa"><input type="radio" name="q4" value="Rakshasa" /> Rakshasa</label>
+            <label class="quiz-alternativa"><input type="radio" name="q4" value="Vampiro" /> Vampiro</label>
+          </div>
+
+          <div class="campo quiz-pergunta">
+            <span>5) Qual criatura é conhecida por assombrar locais e pessoas após a morte?</span>
+            <label class="quiz-alternativa"><input type="radio" name="q5" value="Fantasma" /> Fantasma</label>
+            <label class="quiz-alternativa"><input type="radio" name="q5" value="Arachne" /> Arachne</label>
+            <label class="quiz-alternativa"><input type="radio" name="q5" value="Ceifador (Reaper)" /> Ceifador (Reaper)</label>
+          </div>
+
+          <button type="submit" class="botao">Enviar respostas</button>
+        </form>
+
+        <p id="resultadoQuiz" class="quiz-resultado" aria-live="polite"></p>
+      </section>
+    </div>
+  </main>
+
+  <div class="footer">
+    <div class="container">
+      <h4>Projeto acadêmico • Supernatural Fan Site • SPTech &copy; 2026</h4>
+    </div>
+  </div>
+</body>
+
+</html>

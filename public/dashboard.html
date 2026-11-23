@@ -7,43 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supernatural | Dashboard</title>
 
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="./css/estilo.css">
     <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="stylesheet" href="../css/dashboard-supernatural.css">
+    <link rel="stylesheet" href="./css/dashboard-supernatural.css">
 
-    <script src="../js/dashboard-supernatural.js"></script>
+    <script src="./js/sessao.js"></script>
+    <script src="./js/dashboard-supernatural.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
 
 <body onload="inicializarDashboard()">
-
     <div class="header">
         <div class="container">
-            <img src="../assets/imgs/Supernatural_logo_maroon.png">
+            <img src="./assets/imgs/Supernatural_logo_maroon.png" alt="Logo Supernatural">
             <ul class="navbar">
-                <li class="agora">
-                    <a href="#">INÍCIO</a>
-                </li>
-                <li>
-                    <a href="../personagens.html">PERSONAGENS</a>
-                </li>
-                <li>
-                    <a href="../monstros.html">MONSTROS</a>
-                </li>
+                <li class="agora"><a href="#">DASHBOARD</a></li>
+                <li><a href="./personagens.html">PERSONAGENS</a></li>
+                <li><a href="./monstros.html">MONSTROS</a></li>
+                <li><a href="./quiz.html">QUIZ</a></li>
                 <li>|</li>
-                <li>
-                    <a href="../login.html">LOGIN</a>
-                </li>
-                <li>
-                    <a href="../cadastro.html">CADASTRO</a>
-                </li>
+                <li><a href="./index.html">INÍCIO</a></li>
+                <li><a href="./login.html" onclick="limparSessao()">SAIR</a></li>
             </ul>
         </div>
     </div>
 
     <main class="dashboard-container">
-
         <section class="dashboard-boas-vindas">
             <h1>Dashboard — Supernatural</h1>
             <p>Bem-vindo, <span id="nomeUsuario"></span></p>
@@ -53,12 +42,18 @@
             <div class="preferencias-grid">
                 <div class="card-preferencia">
                     <h3>Seu Personagem Favorito</h3>
-                    <p id="personagemFavorito">Carregando...</p>
+                    <div class="preferencia-conteudo">
+                        <img id="personagemFavoritoImagem" class="imagem-card" src="./assets/imgs/personagens/default.svg" alt="Personagem favorito">
+                        <p id="personagemFavorito">Carregando...</p>
+                    </div>
                 </div>
 
                 <div class="card-preferencia">
                     <h3>Seu Monstro Mais Temido</h3>
-                    <p id="monstroTemido">Carregando...</p>
+                    <div class="preferencia-conteudo">
+                        <img id="monstroTemidoImagem" class="imagem-card" src="./assets/imgs/monstros/default.svg" alt="Monstro mais temido">
+                        <p id="monstroTemido">Carregando...</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -67,14 +62,30 @@
             <div class="indicadores-grid">
                 <div class="kpi-card">
                     <h3>Personagem Favorito da Comunidade</h3>
-                    <p id="kpiPersonagemNome">-</p>
-                    <span id="kpiPersonagemPercentual">0%</span>
+                    <div class="kpi-conteudo">
+                        <img id="kpiPersonagemImagem" class="imagem-card" src="./assets/imgs/personagens/default.svg" alt="Personagem mais escolhido">
+                        <div>
+                            <p id="kpiPersonagemNome">-</p>
+                            <span id="kpiPersonagemPercentual">0%</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="kpi-card">
                     <h3>Monstro Mais Temido da Comunidade</h3>
-                    <p id="kpiMonstroNome">-</p>
-                    <span id="kpiMonstroPercentual">0%</span>
+                    <div class="kpi-conteudo">
+                        <img id="kpiMonstroImagem" class="imagem-card" src="./assets/imgs/monstros/default.svg" alt="Monstro mais escolhido">
+                        <div>
+                            <p id="kpiMonstroNome">-</p>
+                            <span id="kpiMonstroPercentual">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card kpi-quiz">
+                    <h3>Sua Maior Pontuação no Quiz</h3>
+                    <p id="kpiMaiorPontuacaoQuiz">0</p>
+                    <span>Baseado na melhor tentativa registrada</span>
                 </div>
             </div>
         </section>
@@ -92,7 +103,6 @@
                 </div>
             </div>
         </section>
-
     </main>
 
     <div class="footer">

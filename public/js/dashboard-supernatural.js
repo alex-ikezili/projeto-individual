@@ -1,6 +1,12 @@
 var graficoPersonagens = null;
 var graficoMonstros = null;
 
+var corPrimaria = "#8d332c";
+var corPrimariaSuave = "rgba(141, 51, 44, 0.28)";
+var corTexto = "#e7e0d2";
+var corTextoSecundaria = "#c7c7c7";
+var corGrade = "rgba(231, 224, 210, 0.12)";
+
 function inicializarDashboard() {
     var idUsuario = sessionStorage.ID_USUARIO;
     var nomeUsuario = sessionStorage.NOME_USUARIO;
@@ -25,6 +31,66 @@ function buscarJson(url, mensagemErro) {
     });
 }
 
+function atualizarImagem(idElemento, caminhoImagem, fallback) {
+    var elemento = document.getElementById(idElemento);
+
+    if (!elemento) {
+        return;
+    }
+
+    if (caminhoImagem && caminhoImagem.trim() !== "") {
+        var caminhoNormalizado = normalizarCaminhoImagem(caminhoImagem);
+        elemento.src = caminhoNormalizado;
+        definirCategoriaImagem(elemento, caminhoNormalizado, idElemento);
+    } else {
+        elemento.src = fallback;
+        definirCategoriaImagem(elemento, fallback, idElemento);
+    }
+}
+
+function definirCategoriaImagem(elemento, caminhoImagem, idElemento) {
+    if (!elemento) {
+        return;
+    }
+
+    if (caminhoImagem && caminhoImagem.indexOf("assets/imgs/monstros/") !== -1) {
+        elemento.dataset.categoria = "monstros";
+        return;
+    }
+
+    if (caminhoImagem && caminhoImagem.indexOf("assets/imgs/personagens/") !== -1) {
+        elemento.dataset.categoria = "personagens";
+        return;
+    }
+
+    if (idElemento.toLowerCase().indexOf("monstro") !== -1) {
+        elemento.dataset.categoria = "monstros";
+    } else {
+        elemento.dataset.categoria = "personagens";
+    }
+}
+
+function normalizarCaminhoImagem(caminhoImagem) {
+    if (!caminhoImagem || caminhoImagem.trim() === "") {
+        return caminhoImagem;
+    }
+
+    if (caminhoImagem.endsWith("default.svg")) {
+        return caminhoImagem;
+    }
+
+    if (
+        caminhoImagem.indexOf("assets/imgs/personagens/") !== -1 ||
+        caminhoImagem.indexOf("assets/imgs/monstros/") !== -1
+    ) {
+        return caminhoImagem
+            .replace(".webp", ".png")
+            .replace(".svg", ".png");
+    }
+
+    return caminhoImagem;
+}
+
 function carregarPreferencias(idUsuario) {
     buscarJson(`/api/dashboard/usuario/${idUsuario}`, "Erro ao buscar preferências do usuário")
         .then(function (dados) {
@@ -33,6 +99,21 @@ function carregarPreferencias(idUsuario) {
 
             document.getElementById("monstroTemido").textContent =
                 dados.monstroMaisTemido || "Não informado";
+
+            document.getElementById("kpiMaiorPontuacaoQuiz").textContent =
+                Number(dados.maiorPontuacaoQuiz || 0);
+
+            atualizarImagem(
+                "personagemFavoritoImagem",
+                dados.personagemFavoritoImagem,
+                "assets/imgs/personagens/default.svg"
+            );
+
+            atualizarImagem(
+                "monstroTemidoImagem",
+                dados.monstroMaisTemidoImagem,
+                "assets/imgs/monstros/default.svg"
+            );
         })
         .catch(function (erro) {
             console.error(erro);
@@ -61,12 +142,24 @@ function atualizarKpis(personagens, monstros) {
         document.getElementById("kpiPersonagemNome").textContent = personagens[0].nome;
         document.getElementById("kpiPersonagemPercentual").textContent =
             Number(personagens[0].percentualPreferencia).toFixed(1) + "%";
+
+        atualizarImagem(
+            "kpiPersonagemImagem",
+            personagens[0].caminho_imagem,
+            "assets/imgs/personagens/default.svg"
+        );
     }
 
     if (monstros.length > 0) {
         document.getElementById("kpiMonstroNome").textContent = monstros[0].nome;
         document.getElementById("kpiMonstroPercentual").textContent =
             Number(monstros[0].percentualPreferencia).toFixed(1) + "%";
+
+        atualizarImagem(
+            "kpiMonstroImagem",
+            monstros[0].caminho_imagem,
+            "assets/imgs/monstros/default.svg"
+        );
     }
 }
 
@@ -95,17 +188,17 @@ function plotarGraficos(personagens, monstros) {
         data: {
             labels: labelsPersonagens,
             datasets: [{
-                label: "Votos",
+                label: "Quantidade de votos",
                 data: votosPersonagens,
-                borderWidth: 1
+                backgroundColor: corPrimariaSuave,
+                borderColor: corPrimaria,
+                borderWidth: 1,
+                borderRadius: 8,
+                borderSkipped: false,
+                maxBarThickness: 44
             }]
         },
-        options: {
-            responsive: true,
-            scales: {
-                y: { beginAtZero: true, ticks: { precision: 0 } }
-            }
-        }
+        options: gerarOpcoesGrafico()
     });
 
     graficoMonstros = new Chart(document.getElementById("graficoMonstros"), {
@@ -113,16 +206,66 @@ function plotarGraficos(personagens, monstros) {
         data: {
             labels: labelsMonstros,
             datasets: [{
-                label: "Votos",
+                label: "Quantidade de votos",
                 data: votosMonstros,
-                borderWidth: 1
+                backgroundColor: corPrimariaSuave,
+                borderColor: corPrimaria,
+                borderWidth: 1,
+                borderRadius: 8,
+                borderSkipped: false,
+                maxBarThickness: 44
             }]
         },
-        options: {
-            responsive: true,
-            scales: {
-                y: { beginAtZero: true, ticks: { precision: 0 } }
+        options: gerarOpcoesGrafico()
+    });
+}
+
+function gerarOpcoesGrafico() {
+    return {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                labels: {
+                    color: corTextoSecundaria,
+                    boxWidth: 14,
+                    usePointStyle: true,
+                    pointStyle: "rectRounded"
+                }
+            },
+            tooltip: {
+                backgroundColor: "rgba(13, 13, 13, 0.96)",
+                borderColor: corPrimaria,
+                borderWidth: 1,
+                titleColor: corTexto,
+                bodyColor: corTexto,
+                displayColors: false
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: corTextoSecundaria,
+                    maxRotation: 0,
+                    autoSkip: false,
+                    font: { size: 11 }
+                },
+                grid: {
+                    color: "transparent",
+                    borderColor: corGrade
+                }
+            },
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    precision: 0,
+                    color: corTextoSecundaria
+                },
+                grid: {
+                    color: corGrade,
+                    borderColor: corGrade
+                }
             }
         }
-    });
+    };
 }
