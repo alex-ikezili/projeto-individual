@@ -557,7 +557,9 @@ input {
   min-height: 100vh;
   padding-top: 130px;
   padding-bottom: 60px;
-  background-image: linear-gradient(180deg, rgba(5, 6, 6, .95) 0%, rgba(11, 13, 13, .96) 100%), url('../assets/imgs/banner-fundo.jpeg');
+  background-image: linear-gradient(90deg, rgba(5,6,6,.97) 0%, rgba(5,6,6,.76) 42%, rgba(5,6,6,.18) 76%),
+    linear-gradient(0deg, #090a0a 0%, transparent 24%),
+    url('../assets/imgs/bg-individual.avif');
   background-size: cover;
   background-position: center;
 }
@@ -723,7 +725,9 @@ input {
   min-height: 100vh;
   padding: 130px 0 60px;
   color: #e7e0d2;
-  background-image: linear-gradient(180deg, rgba(5, 6, 6, .95) 0%, rgba(11, 13, 13, .96) 100%), url('../assets/imgs/banner-fundo.jpeg');
+  background-image: linear-gradient(90deg, rgba(5,6,6,.97) 0%, rgba(5,6,6,.76) 42%, rgba(5,6,6,.18) 76%),
+    linear-gradient(0deg, #090a0a 0%, transparent 24%),
+    url('../assets/imgs/bg-individual.avif');
   background-size: cover;
   background-position: center;
   box-sizing: border-box;
