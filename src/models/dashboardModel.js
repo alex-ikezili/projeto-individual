@@ -7,7 +7,14 @@ function buscarPreferenciasUser(id) {
             u.id,
             u.nome,
             p.nome AS personagemFavorito,
-            m.nome AS monstroMaisTemido
+            p.caminho_imagem AS personagemFavoritoImagem,
+            m.nome AS monstroMaisTemido,
+            m.caminho_imagem AS monstroMaisTemidoImagem,
+            COALESCE((
+                SELECT MAX(qt.pontuacao)
+                FROM quiz_tentativa qt
+                WHERE qt.fk_usuario = u.id
+            ), 0) AS maiorPontuacaoQuiz
 
         FROM usuario u
 
@@ -17,10 +24,10 @@ function buscarPreferenciasUser(id) {
             LEFT JOIN monstro m
             ON u.fk_monstro = m.id
 
-        WHERE u.id = ${id};
+        WHERE u.id = ?;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+    return database.executar(instrucaoSql, [id]);
 }
 
 function buscarPersonagensFavoritos() {
@@ -29,6 +36,7 @@ function buscarPersonagensFavoritos() {
         SELECT
             p.id,
             p.nome,
+            p.caminho_imagem,
             COUNT(u.id) AS totalFavoritos,
             ROUND(
                 COUNT(u.id) * 100 /
@@ -44,9 +52,11 @@ function buscarPersonagensFavoritos() {
             LEFT JOIN usuario u
             ON p.id = u.fk_personagem
 
-        GROUP BY p.id, p.nome
+        GROUP BY p.id, p.nome, p.caminho_imagem
 
-        ORDER BY totalFavoritos DESC, p.nome ASC;
+        ORDER BY totalFavoritos DESC, p.nome ASC
+
+        LIMIT 5;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -58,6 +68,7 @@ function buscarMonstrosTemidos() {
         SELECT
             m.id,
             m.nome,
+            m.caminho_imagem,
             COUNT(u.id) AS totalTemidos,
             ROUND(
                 COUNT(u.id) * 100 /
@@ -73,9 +84,11 @@ function buscarMonstrosTemidos() {
             LEFT JOIN usuario u
             ON m.id = u.fk_monstro
 
-        GROUP BY m.id, m.nome
+        GROUP BY m.id, m.nome, m.caminho_imagem
 
-        ORDER BY totalTemidos DESC, m.nome ASC;
+        ORDER BY totalTemidos DESC, m.nome ASC
+
+        LIMIT 5;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
