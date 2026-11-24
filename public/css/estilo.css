@@ -76,11 +76,11 @@ body {
 /* BANNER */
 
 .home-hero {
-  min-height: 100vh;
-  padding-top: 120px;
+  min-height: clamp(520px, 78vh, 760px);
+  padding: 116px 0 56px;
   color: #e7e0d2;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   background-image:
     linear-gradient(90deg, rgba(5, 6, 6, .96) 0%, rgba(5, 6, 6, .72) 46%, rgba(5, 6, 6, .35) 100%),
     linear-gradient(0deg, #080909 0%, transparent 26%),
@@ -91,7 +91,7 @@ body {
 }
 
 .home-hero .container {
-  align-items: center;
+  align-items: flex-start;
 }
 
 .home-hero-conteudo {
@@ -99,6 +99,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin-top: 6px;
 }
 
 .home-kicker {
@@ -876,15 +877,15 @@ input {
 
 .personagens-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .personagem-card {
   background-color: #141818;
   border: 1px solid #2f3333;
   border-radius: 10px;
-  padding: 18px;
+  padding: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
 }
 
@@ -892,39 +893,56 @@ input {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  object-position: 50% 22%;
+  object-position: center;
   border-radius: 8px;
   border: 1px solid #303434;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .foto-dean {
-  object-position: 50% 14%;
+  object-position: 50% 22%;
 }
 
 .foto-sam {
-  object-position: 45% 23%;
+  object-position: 46% 24%;
 }
 
 .foto-castiel {
-  object-position: 42% 20%;
+  object-position: 43% 26%;
 }
 
 .foto-bobby {
-  object-position: 50% 18%;
+  object-position: 50% 28%;
 }
 
 .foto-crowley {
-  object-position: 43% 22%;
+  object-position: 44% 32%;
 }
 
 .foto-jack {
-  object-position: 44% 18%;
+  object-position: 46% 24%;
+}
+
+.foto-john {
+  object-position: 50% 30%;
+}
+
+.foto-rowena {
+  object-position: 50% 24%;
+}
+
+.foto-lucifer {
+  object-position: 50% 22%;
+}
+
+.foto-gabriel {
+  object-position: 50% 24%;
 }
 
 .personagem-card h3 {
-  margin: 10px 0 14px;
+  margin: 8px 0 2px;
   color: #e7e0d2;
+  font-size: 18px;
 }
 
 .personagem-card ul {
@@ -940,13 +958,126 @@ input {
 .personagem-tipo {
   display: inline-block;
   color: #8d332c;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: .04em;
   text-transform: uppercase;
 }
 
+body.modal-aberto {
+  overflow: hidden;
+}
+
+.criatura-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 40;
+}
+
+.criatura-modal.ativo {
+  display: block;
+}
+
+.criatura-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(4, 4, 4, 0.76);
+}
+
+.criatura-modal-conteudo {
+  position: relative;
+  width: min(860px, calc(100% - 28px));
+  max-height: calc(100vh - 46px);
+  margin: 24px auto;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #151919 0%, #101313 100%);
+  border: 1px solid #3a3f3f;
+  border-radius: 12px;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, .45);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.criatura-modal-fechar {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  color: #d4cec1;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.criatura-modal-fechar:hover {
+  color: #8d332c;
+}
+
+.criatura-modal-cabecalho {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.criatura-modal-imagem {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  border: 1px solid #343838;
+}
+
+.criatura-modal-titulo-bloco h3 {
+  margin: 8px 0 0;
+  color: #e7e0d2;
+  font-size: 34px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.criatura-modal-corpo p {
+  margin: 0 0 10px;
+  line-height: 1.6;
+  color: #d2ccbf;
+}
+
+.criatura-modal-corpo strong {
+  color: #e7e0d2;
+}
+
+@media (max-width: 760px) {
+  .criatura-modal-conteudo {
+    width: calc(100% - 16px);
+    margin: 8px auto;
+    max-height: calc(100vh - 16px);
+    padding: 16px;
+  }
+
+  .criatura-modal-cabecalho {
+    grid-template-columns: 1fr;
+  }
+
+  .criatura-modal-titulo-bloco h3 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .personagens-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 900px) {
+  .personagens-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
   .personagens-topo h2 {
     font-size: 36px;
   }
@@ -1174,8 +1305,7 @@ input {
 @media (max-width: 900px) {
   .home-hero {
     min-height: auto;
-    padding-top: 120px;
-    padding-bottom: 70px;
+    padding: 112px 0 52px;
   }
 
   .home-hero-conteudo h1 {

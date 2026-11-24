@@ -39,9 +39,8 @@ function atualizarImagem(idElemento, caminhoImagem, fallback) {
     }
 
     if (caminhoImagem && caminhoImagem.trim() !== "") {
-        var caminhoNormalizado = normalizarCaminhoImagem(caminhoImagem);
-        elemento.src = caminhoNormalizado;
-        definirCategoriaImagem(elemento, caminhoNormalizado, idElemento);
+        elemento.src = caminhoImagem;
+        definirCategoriaImagem(elemento, caminhoImagem, idElemento);
     } else {
         elemento.src = fallback;
         definirCategoriaImagem(elemento, fallback, idElemento);
@@ -68,27 +67,6 @@ function definirCategoriaImagem(elemento, caminhoImagem, idElemento) {
     } else {
         elemento.dataset.categoria = "personagens";
     }
-}
-
-function normalizarCaminhoImagem(caminhoImagem) {
-    if (!caminhoImagem || caminhoImagem.trim() === "") {
-        return caminhoImagem;
-    }
-
-    if (caminhoImagem.endsWith("default.svg")) {
-        return caminhoImagem;
-    }
-
-    if (
-        caminhoImagem.indexOf("assets/imgs/personagens/") !== -1 ||
-        caminhoImagem.indexOf("assets/imgs/monstros/") !== -1
-    ) {
-        return caminhoImagem
-            .replace(".webp", ".png")
-            .replace(".svg", ".png");
-    }
-
-    return caminhoImagem;
 }
 
 function carregarPreferencias(idUsuario) {

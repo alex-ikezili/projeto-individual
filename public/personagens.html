@@ -9,6 +9,8 @@
     <title>Supernatural | Personagens</title>
 
     <script src="./js/sessao.js"></script>
+    <script src="./js/cards-modal-core.js" defer></script>
+    <script src="./js/personagens-modal.js" defer></script>
 
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="icon" href="./assets/icon/favicon2.ico">
@@ -38,66 +40,90 @@
             </div>
 
             <section class="personagens-grid" id="categorias">
-                <article class="personagem-card">
-                    <img src="assets/imgs/personagens/dean-winchester.png" alt="Dean Winchester" class="personagem-foto">
+                <article class="personagem-card" data-personagem="Dean Winchester">
+                    <img src="assets/imgs/personagens/dean-winchester.png" alt="Dean Winchester" class="personagem-foto foto-dean">
                     <span class="personagem-tipo">Caçador</span>
                     <h3>Dean Winchester</h3>
                 </article>
 
-                <article class="personagem-card">
-                    <img src="assets/imgs/personagens/sam-winchester.png" alt="Sam Winchester" class="personagem-foto">
+                <article class="personagem-card" data-personagem="Sam Winchester">
+                    <img src="assets/imgs/personagens/sam-winchester.png" alt="Sam Winchester" class="personagem-foto foto-sam">
                     <span class="personagem-tipo">Caçador</span>
                     <h3>Sam Winchester</h3>
                 </article>
 
-                <article class="personagem-card">
-                    <img src="assets/imgs/personagens/castiel.png" alt="Castiel" class="personagem-foto">
+                <article class="personagem-card" data-personagem="Castiel">
+                    <img src="assets/imgs/personagens/castiel.png" alt="Castiel" class="personagem-foto foto-castiel">
                     <span class="personagem-tipo">Anjo</span>
                     <h3>Castiel</h3>
                 </article>
 
-                <article class="personagem-card">
-                    <img src="assets/imgs/personagens/bobby-singer.png" alt="Bobby Singer" class="personagem-foto">
+                <article class="personagem-card" data-personagem="Bobby Singer">
+                    <img src="assets/imgs/personagens/bobby-singer.png" alt="Bobby Singer" class="personagem-foto foto-bobby">
                     <span class="personagem-tipo">Aliado</span>
                     <h3>Bobby Singer</h3>
                 </article>
 
-                <article class="personagem-card">
-                    <img src="assets/imgs/personagens/crowley.png" alt="Crowley" class="personagem-foto">
+                <article class="personagem-card" data-personagem="Crowley">
+                    <img src="assets/imgs/personagens/crowley.png" alt="Crowley" class="personagem-foto foto-crowley">
                     <span class="personagem-tipo">Rei do Inferno</span>
                     <h3>Crowley</h3>
                 </article>
 
-                <article class="personagem-card">
-                    <img src="assets/imgs/personagens/jack-kline.png" alt="Jack Kline" class="personagem-foto">
+                <article class="personagem-card" data-personagem="Jack Kline">
+                    <img src="assets/imgs/personagens/jack-kline.png" alt="Jack Kline" class="personagem-foto foto-jack">
                     <span class="personagem-tipo">Nefilim</span>
                     <h3>Jack Kline</h3>
                 </article>
 
-                <article class="personagem-card">
-                    <img src="assets/imgs/personagens/john-winchester.png" alt="John Winchester" class="personagem-foto">
+                <article class="personagem-card" data-personagem="John Winchester">
+                    <img src="assets/imgs/personagens/john-winchester.png" alt="John Winchester" class="personagem-foto foto-john">
                     <span class="personagem-tipo">Caçador</span>
                     <h3>John Winchester</h3>
                 </article>
 
-                <article class="personagem-card">
-                    <img src="assets/imgs/personagens/rowena-macleod.png" alt="Rowena MacLeod" class="personagem-foto">
+                <article class="personagem-card" data-personagem="Rowena MacLeod">
+                    <img src="assets/imgs/personagens/rowena-macleod.png" alt="Rowena MacLeod" class="personagem-foto foto-rowena">
                     <span class="personagem-tipo">Bruxa</span>
                     <h3>Rowena MacLeod</h3>
                 </article>
 
-                <article class="personagem-card">
-                    <img src="assets/imgs/personagens/lucifer.png" alt="Lucifer" class="personagem-foto">
+                <article class="personagem-card" data-personagem="Lucifer">
+                    <img src="assets/imgs/personagens/lucifer.png" alt="Lucifer" class="personagem-foto foto-lucifer">
                     <span class="personagem-tipo">Arcanjo</span>
                     <h3>Lucifer</h3>
                 </article>
 
-                <article class="personagem-card">
-                    <img src="assets/imgs/personagens/gabriel.png" alt="Gabriel" class="personagem-foto">
+                <article class="personagem-card" data-personagem="Gabriel">
+                    <img src="assets/imgs/personagens/gabriel.png" alt="Gabriel" class="personagem-foto foto-gabriel">
                     <span class="personagem-tipo">Arcanjo</span>
                     <h3>Gabriel</h3>
                 </article>
             </section>
+        </div>
+    </div>
+
+    <div id="personagemModal" class="criatura-modal" aria-hidden="true">
+        <div class="criatura-modal-overlay" data-close="overlay"></div>
+        <div class="criatura-modal-conteudo" role="dialog" aria-modal="true" aria-labelledby="modalNomePersonagem">
+            <button type="button" class="criatura-modal-fechar" id="fecharPersonagemModal" aria-label="Fechar">&times;</button>
+
+            <div class="criatura-modal-cabecalho">
+                <img id="modalImagemPersonagem" src="" alt="Imagem do personagem" class="criatura-modal-imagem">
+                <div class="criatura-modal-titulo-bloco">
+                    <span id="modalCategoriaPersonagem" class="personagem-tipo"></span>
+                    <h3 id="modalNomePersonagem"></h3>
+                </div>
+            </div>
+
+            <div class="criatura-modal-corpo">
+                <p><strong>Descrição:</strong> <span id="modalDescricaoPersonagem"></span></p>
+                <p><strong>Personalidade:</strong> <span id="modalPersonalidadePersonagem"></span></p>
+                <p><strong>Habilidades:</strong> <span id="modalHabilidadesPersonagem"></span></p>
+                <p><strong>História:</strong> <span id="modalHistoriaPersonagem"></span></p>
+                <p><strong>Relações importantes:</strong> <span id="modalRelacoesPersonagem"></span></p>
+                <p><strong>Curiosidades:</strong> <span id="modalCuriosidadesPersonagem"></span></p>
+            </div>
         </div>
     </div>
 

@@ -136,6 +136,30 @@
 </html>
 
 <script>
+  function validarSenhaForte(senha) {
+    if (senha.length < 6) {
+      return false;
+    }
+
+    var temMaiuscula = false;
+    var temMinuscula = false;
+    var temNumero = false;
+
+    for (var i = 0; i < senha.length; i++) {
+      var caractere = senha[i];
+
+      if (caractere >= "A" && caractere <= "Z") {
+        temMaiuscula = true;
+      } else if (caractere >= "a" && caractere <= "z") {
+        temMinuscula = true;
+      } else if (caractere >= "0" && caractere <= "9") {
+        temNumero = true;
+      }
+    }
+
+    return temMaiuscula && temMinuscula && temNumero;
+  }
+
   function cadastrar() {
     aguardar();
 
@@ -154,6 +178,13 @@
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "Preencha todos os campos para continuar.";
+      finalizarAguardar();
+      return false;
+    }
+
+    if (!validarSenhaForte(senhaVar)) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "A senha deve ter no mínimo 6 caracteres, com letra maiúscula, minúscula e pelo menos um número.";
       finalizarAguardar();
       return false;
     }
